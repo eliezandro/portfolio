@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>My Portfolio - Responsive Blue and White Flat Style</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    /* Root Variables for blue and white flat style */
+    :root {
+      --primary-color: #1e40af; /* strong blue */
+      --primary-color-light: #3b82f6; /* lighter bright blue */
+      --secondary-color: #2563eb; /* medium blue */
+      --background-color: #ffffff; /* white background */
+      --text-color: #1e3a8a; /* dark blue text */
+      --text-light: #3b82f6; /* lighter blue text */
+      --border-radius: 8px;
+      --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+      --shadow: none; /* Flat style typically avoids shadows */
+    }
+
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-family);
+      color: var(--text-color);
+      background-color: var(--background-color);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover, a:focus {
+      color: var(--secondary-color);
+      outline: none;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1.5rem 3rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Header and nav */
+    header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background-color: var(--background-color);
+      border-bottom: 2px solid var(--primary-color-light);
+      z-index: 100;
+      user-select: none;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: var(--text-color);
+    }
+
+    nav .logo {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      user-select: text;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      font-weight: 600;
+      color: var(--text-color);
+      cursor: pointer;
+      position: relative;
+      user-select: none;
+    }
+    nav ul li::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--secondary-color);
+      bottom: -5px;
+      left: 0;
+      transition: width 0.3s ease;
+      border-radius: 0;
+    }
+    nav ul li:hover::after, nav ul li:focus-within::after {
+      width: 100%;
+    }
+
+    /* About section */
+    #about {
+      margin-top: 3rem;
+      background-color: var(--background-color);
+      border-radius: var(--border-radius);
+      padding: 3rem 2rem 4rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      user-select: none;
+    }
+
+    #about img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      border: 4px solid var(--primary-color-light);
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+      cursor: default;
+      user-select: none;
+      background-color: var(--primary-color-light);
+    }
+    #about img:hover, #about img:focus {
+      transform: scale(1.05);
+      outline: 3px solid var(--secondary-color);
+    }
+
+    #about .about-text {
+      flex: 1 1 320px;
+      max-width: 600px;
+      user-select: text;
+      color: var(--text-color);
+    }
+
+    #about .about-text h1 {
+      font-weight: 700;
+      font-size: 2.75rem;
+      margin-top: 0;
+      margin-bottom: 1rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      position: relative;
+      color: var(--primary-color);
+      user-select: text;
+    }
+    #about .about-text h1::after {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 3px;
+      background-color: var(--secondary-color);
+      bottom: -6px;
+      left: 0;
+      border-radius: 0;
+    }
+
+    #about .about-text p {
+      font-weight: 400;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: var(--text-color);
+      user-select: text;
+    }
+
+    /* Skills Section */
+    #skills {
+      margin-top: 3.5rem;
+      background-color: var(--background-color);
+      border-radius: var(--border-radius);
+      padding: 2.5rem 1.5rem;
+      user-select: none;
+    }
+    #skills h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      user-select: text;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      user-select: none;
+    }
+
+    .skill {
+      background-color: var(--primary-color-light);
+      color: white;
+      border-radius: 9999px;
+      padding: 0.6rem 1.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      user-select: none;
+      transition: background-color 0.3s ease;
+      cursor: default;
+    }
+    .skill:hover, .skill:focus {
+      background-color: var(--secondary-color);
+      outline: none;
+    }
+
+    /* Projects Section */
+    #projects {
+      margin-top: 3.5rem;
+      background-color: var(--background-color);
+      border-radius: var(--border-radius);
+      padding: 2.5rem 1.5rem 3rem;
+      user-select: none;
+    }
+
+    #projects h2 {
+      text-align: center;
+      font-weight: 700;
+      font-size: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 2rem;
+      color: var(--primary-color);
+      user-select: text;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background-color: var(--primary-color-light);
+      border-radius: var(--border-radius);
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: white;
+      cursor: default;
+      user-select: text;
+      transition: background-color 0.3s ease;
+      box-shadow: none;
+    }
+    .project-card:hover, .project-card:focus-within {
+      background-color: var(--secondary-color);
+      outline: none;
+    }
+
+    .project-card h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 1.35rem;
+      user-select: text;
+    }
+
+    .project-card p {
+      flex-grow: 1;
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+      user-select: text;
+    }
+
+    .project-card a {
+      background-color: white;
+      color: var(--primary-color);
+      text-align: center;
+      font-weight: 700;
+      padding: 0.6rem 1.4rem;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+
+    .project-card a:hover, .project-card a:focus {
+      background-color: var(--secondary-color);
+      color: white;
+      border-color: var(--secondary-color);
+      outline: none;
+      text-decoration: none;
+    }
+
+    /* Contact Section */
+    #contact {
+      margin-top: 3.5rem;
+      background-color: var(--background-color);
+      border-radius: var(--border-radius);
+      padding: 3rem 1.5rem 4rem;
+      color: var(--text-color);
+      text-align: center;
+      user-select: none;
+    }
+    #contact h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--primary-color);
+      user-select: text;
+    }
+
+    #contact p {
+      font-size: 1.15rem;
+      margin-bottom: 2rem;
+      color: var(--text-color);
+      user-select: text;
+    }
+
+    /* Social links container */
+    #contact .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    #contact .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background-color: var(--primary-color-light);
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      text-decoration: none;
+      user-select: none;
+      cursor: pointer;
+      border: none;
+    }
+
+    #contact .social-links a:hover, #contact .social-links a:focus {
+      background-color: var(--secondary-color);
+      outline: none;
+    }
+
+    #contact a.email-btn {
+      display: inline-block;
+      background-color: var(--primary-color);
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.9rem 2.2rem;
+      border-radius: 36px;
+      border: none;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      user-select: none;
+      cursor: pointer;
+      user-select: none;
+    }
+    #contact a.email-btn:hover, #contact a.email-btn:focus {
+      background-color: var(--secondary-color);
+      outline: none;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: var(--primary-color);
+      user-select: none;
+      user-select: none;
+    }
+
+    /* Responsive for smaller screens */
+    @media (max-width: 700px) {
+      #about {
+        flex-direction: column;
+        text-align: center;
+        padding: 2.5rem 1.5rem 3rem;
+      }
+      #about img {
+        margin: 0 auto 1.5rem;
+      }
+      nav ul {
+        gap: 1.2rem;
+      }
+      nav {
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      nav ul {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      #about .about-text h1 {
+        font-size: 2rem;
+      }
+      #about .about-text p {
+        font-size: 1rem;
+      }
+      #skills h2, #projects h2, #contact h2 {
+        font-size: 1.6rem;
+      }
+      .project-card h3 {
+        font-size: 1.2rem;
+      }
+      .project-card p {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+      }
+      #contact p {
+        font-size: 1rem;
+      }
+      .skill {
+        font-size: 0.9rem;
+        padding: 0.5rem 1.25rem;
+      }
+    }
+
+  </style>
+  
+  <!-- Load Feather Icons for social icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">MyPortfolio</div>
+      <ul>
+        <li><a href="#about" tabindex="1">About</a></li>
+        <li><a href="#skills" tabindex="2">Skills</a></li>
+        <li><a href="#projects" tabindex="3">Projects</a></li>
+        <li><a href="#contact" tabindex="4">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container" role="main">
+    <section id="about" aria-label="About Me">
+      <img src="pic.jpg" alt="Profile Picture of John Doe" />
+      <div class="about-text">
+        <h1>Hello, I'm Elizandro Miguel P Arevalo</h1>
+        <p>
+          I am a dedicated IT student with a strong passion for technology, programming, and problem solving. Currently pursuing my degree in information technology, I've developed skills in areas such as software development, networking, database management, and system administration. I'm proficient in languages and tools like Python, Java, HTML/CSS, JavaScript, SQL, and Linux. I enjoy building projects that challenge me to learn and grow and I stay up to date with the latest tech trends.  
+        </p>
+      </div>
+    </section>
+
+    <section id="skills" aria-label="My Skills">
+      <h2>My Skills</h2>
+      <div class="skills-list" role="list" aria-label="List of my skills">
+        <div class="skill" role="listitem" tabindex="5">HTML5</div>
+        <div class="skill" role="listitem" tabindex="6">CSS3</div>
+        <div class="skill" role="listitem" tabindex="7">JavaScript</div>
+        <div class="skill" role="listitem" tabindex="11">Git</div>
+        <div class="skill" role="listitem" tabindex="12">Responsive Design</div>
+        <div class="skill" role="listitem" tabindex="13">Figma</div>
+      </div>
+    </section>
+
+    <section id="projects" aria-label="My Projects">
+      <h2>My Projects</h2>
+      <div class="projects-grid">
+        <article class="project-card" role="article" tabindex="14">
+          <h3>Portfolio Website</h3>
+          <p>A responsive and modern portfolio website built with React and CSS modules to showcase my work and skills.</p>
+        </article>
+        <article class="project-card" role="article" tabindex="16">
+          <h3>Todo App</h3>
+          <p>A sleek task management app built with Vue.js and localStorage for persistent data storage and smooth UX.</p>
+        </article>
+        <article class="project-card" role="article" tabindex="18">
+          <h3>Weather Dashboard</h3>
+          <p>Real-time weather dashboard using OpenWeatherMap API, with custom animations and mobile-first design.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" aria-label="Contact Me">
+      <h2>Contact Me</h2>
+      <p>
+        If you'd like to get in touch, feel free to say hello or connect with me on social media!
+      </p>
+      <div class="social-links" aria-label="Social Media Links">
+        <a href="https://facebook.com/eliezandro" target="_blank" rel="noopener noreferrer" aria-label="Twitter" tabindex="20">
+          <i data-feather="facebook"></i>
+        </a>
+        <a href="https://github.com/eliezandro" target="_blank" rel="noopener noreferrer" aria-label="GitHub" tabindex="22">
+          <i data-feather="github"></i>
+        </a>
+      </div>
+      <a href="mailto:eliezandromiguel1216@gamil.com" class="email-btn" tabindex="23">Email Me</a>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Eliezandro MIguel P Arevalo. All rights reserved.
+  </footer>
+
+  <script>
+    // Activate feather icons
+    feather.replace();
+  </script>
+</body>
+</html>
